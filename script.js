@@ -1,4 +1,8 @@
-// --- Données Mockées (Simule la base de données) ---
+// ==========================================
+// 1. DONNÉES (DATA)
+// ==========================================
+
+// --- Événements (Avec gestion Max Participants) ---
 const eventsData = [
     {
         id: 1,
@@ -7,6 +11,7 @@ const eventsData = [
         time: "14h00",
         location: "Brest",
         participants: 12,
+        maxParticipants: 20,
         image: "🌊"
     },
     {
@@ -16,6 +21,7 @@ const eventsData = [
         time: "09h30",
         location: "Plouzané",
         participants: 5,
+        maxParticipants: 10,
         image: "⚓"
     },
     {
@@ -24,7 +30,8 @@ const eventsData = [
         date: "Mercredi 28 Juin",
         time: "15h00",
         location: "Plougastel-Daoulas",
-        participants: 8,
+        participants: 15,
+        maxParticipants: 15, // Complet
         image: "🌿"
     },
     {
@@ -34,19 +41,85 @@ const eventsData = [
         time: "17h00",
         location: "Brest - Château",
         participants: 45,
+        maxParticipants: 100,
         image: "🏰"
     }
 ];
 
-// --- Chargement des événements ---
-const eventsContainer = document.getElementById('events-grid');
+// --- Boutique (Merch) ---
+const shopData = [
+    {
+        id: 1,
+        name: "Gourde Inox RadePropre",
+        priceXP: 500,
+        priceEur: 15,
+        image: "💧",
+        desc: "Zéro plastique, garde au frais 12h."
+    },
+    {
+        id: 2,
+        name: "T-shirt Coton Bio",
+        priceXP: 800,
+        priceEur: 20,
+        image: "👕",
+        desc: "Logo brodé, fabriqué en Bretagne."
+    },
+    {
+        id: 3,
+        name: "Pince de Ramassage",
+        priceXP: 300,
+        priceEur: 10,
+        image: "🦞",
+        desc: "L'outil indispensable du bénévole."
+    },
+    {
+        id: 4,
+        name: "Sac en Toile Recyclé",
+        priceXP: 150,
+        priceEur: 5,
+        image: "👜",
+        desc: "Pour vos courses ou vos déchets."
+    }
+];
 
+// --- Badges ---
+const badgesData = [
+    { id: 1, title: "Premier Pas", desc: "Premier ramassage.", icon: "🧤", unlocked: true },
+    { id: 2, title: "Vétéran", desc: "+ 2 ans d'ancienneté.", icon: "⚓", unlocked: true },
+    { id: 3, title: "Grand Nettoyeur", desc: "10km² nettoyés.", icon: "🌍", unlocked: false },
+    { id: 4, title: "Influenceur", desc: "Parrainer 5 amis.", icon: "📢", unlocked: false },
+    { id: 5, title: "Lève-tôt", desc: "Ramassage avant 8h.", icon: "🌅", unlocked: true },
+    { id: 6, title: "Capitaine", desc: "Organiser un event.", icon: "👑", unlocked: false }
+];
+
+// --- Historique ---
+const historyData = [
+    { date: "12 Mai", title: "Nettoyage Plage", location: "Trez-Hir", status: "Effectué", xp: "+50 XP" },
+    { date: "04 Avr", title: "Opération Mégots", location: "Brest Port", status: "Effectué", xp: "+30 XP" },
+    { date: "10 Mar", title: "Sensibilisation", location: "Écoles", status: "Annulé", xp: "0 XP" }
+];
+
+// ==========================================
+// 2. FONCTIONS (LOGIQUE)
+// ==========================================
+
+// --- Afficher les événements ---
 function renderEvents() {
-    eventsContainer.innerHTML = ""; // Vider le conteneur
+    const container = document.getElementById('events-grid');
+    if (!container) return; // Sécurité si on n'est pas sur la page index
+
+    container.innerHTML = "";
 
     eventsData.forEach(event => {
+        // Calcul du remplissage
+        const isFull = event.participants >= event.maxParticipants;
+        const btnClass = isFull ? "btn-disabled" : "btn-join";
+        const btnText = isFull ? "Complet" : "Je participe !";
+        const disabledAttr = isFull ? "disabled" : "";
+
         const card = document.createElement('div');
         card.classList.add('event-card');
+        if(isFull) card.classList.add('card-full');
 
         card.innerHTML = `
             <div class="card-header">
@@ -56,72 +129,101 @@ function renderEvents() {
             <div class="card-body">
                 <h3>${event.image} ${event.title}</h3>
                 <div class="card-info">🕒 Horaire : ${event.time}</div>
-                <div class="card-info">👥 Déjà inscrits : <span id="count-${event.id}" class="participant-count">${event.participants}</span></div>
+                <div class="card-info">
+                    👥 Inscrits : <span id="count-${event.id}" class="participant-count">${event.participants}</span> / ${event.maxParticipants}
+                </div>
+                <div class="event-progress">
+                    <div class="event-bar" style="width:${(event.participants/event.maxParticipants)*100}%"></div>
+                </div>
             </div>
             <div class="card-footer">
-                <button class="btn-join" onclick="joinEvent(${event.id})">Je participe !</button>
+                <button class="${btnClass}" onclick="joinEvent(${event.id})" ${disabledAttr}>${btnText}</button>
             </div>
         `;
-        eventsContainer.appendChild(card);
+        container.appendChild(card);
     });
 }
 
-// --- Interaction : Rejoindre un événement (Simulation) ---
+// --- Rejoindre un événement ---
 function joinEvent(id) {
-    // Trouver l'événement dans la liste
     const event = eventsData.find(e => e.id === id);
     if(event) {
-        event.participants++; // Incrémenter le compteur
-        // Mettre à jour l'affichage seulement
-        const countSpan = document.getElementById(`count-${id}`);
-        countSpan.innerText = event.participants;
-        countSpan.style.color = "#27ae60"; // Changer la couleur pour valider
+        if (event.participants >= event.maxParticipants) {
+            alert("Désolé, cet événement est complet !");
+            return;
+        }
+        event.participants++;
+        renderEvents(); // Rafraichir l'affichage
         alert(`Bravo ! Vous êtes inscrit pour ${event.title}.`);
     }
 }
 
-// --- Gestion de la Modale (Connexion/Inscription) ---
-const modal = document.getElementById("auth-modal");
-const btnLogin = document.getElementById("btn-login-nav");
-const spanClose = document.getElementsByClassName("close")[0];
+// --- Afficher la boutique ---
+function renderShop() {
+    const container = document.getElementById('shop-grid');
+    if (!container) return;
 
-// Ouvrir la modale
-btnLogin.onclick = function() {
-    modal.style.display = "block";
+    container.innerHTML = "";
+
+    shopData.forEach(item => {
+        const card = document.createElement('div');
+        card.classList.add('shop-card');
+
+        card.innerHTML = `
+            <div class="shop-icon">${item.image}</div>
+            <h3>${item.name}</h3>
+            <p class="shop-desc">${item.desc}</p>
+            <div class="shop-prices">
+                <span class="price-xp">⚡ ${item.priceXP} XP</span>
+                <span class="price-eur">ou ${item.priceEur}€</span>
+            </div>
+            <button class="btn-buy" onclick="buyItem('${item.name}')">Acheter</button>
+        `;
+        container.appendChild(card);
+    });
 }
 
-// Fermer la modale
-spanClose.onclick = function() {
-    modal.style.display = "none";
+// --- Action d'achat ---
+function buyItem(itemName) {
+    alert(`Merci ! Vous avez commandé : ${itemName}. \n(Simulation de paiement...)`);
 }
 
-// Fermer si on clique en dehors
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Gestion des onglets (Login vs Inscription)
-function openTab(evt, tabName) {
-    let i, tabcontent, tablinks;
+// --- Afficher les badges ---
+function loadBadges() {
+    const grid = document.getElementById('badges-grid');
+    if (!grid) return;
     
-    // Cacher tous les contenus
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Retirer la classe active des boutons
-    tablinks = document.getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Afficher l'onglet actuel
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+    grid.innerHTML = "";
+    badgesData.forEach(badge => {
+        const statusClass = badge.unlocked ? 'unlocked' : 'locked';
+        const div = document.createElement('div');
+        div.className = `badge-card ${statusClass}`;
+        div.innerHTML = `<div class="badge-icon">${badge.icon}</div><div class="badge-title">${badge.title}</div><div class="badge-desc">${badge.desc}</div>`;
+        grid.appendChild(div);
+    });
 }
 
-// Lancer l'affichage au chargement de la page
-document.addEventListener('DOMContentLoaded', renderEvents);
+// --- Afficher l'historique ---
+function loadHistory() {
+    const list = document.getElementById('history-list');
+    if (!list) return;
+
+    list.innerHTML = "";
+    historyData.forEach(item => {
+        const statusClass = item.status === "Effectué" ? "status-done" : "status-absent";
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `<div class="history-date">${item.date}</div><div class="history-content"><div class="history-title">${item.title}</div><div class="history-loc">📍 ${item.location}</div></div><div class="history-right"><span class="history-status ${statusClass}">${item.status}</span><div style="font-size:0.8rem;text-align:right;color:#aaa;">${item.xp}</div></div>`;
+        list.appendChild(div);
+    });
+}
+
+// ==========================================
+// 3. INITIALISATION (Lancement)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+    renderEvents(); // Pour index.html
+    loadBadges();   // Pour compte.html ou boutique.html (si utilisé)
+    loadHistory();  // Pour compte.html
+    renderShop();   // Pour boutique.html
+});

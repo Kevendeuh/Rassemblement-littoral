@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - RadePropre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">🌊 RadePropre</a></div>
+    <div class="nav-links">
+        <a href="boutique.html">Boutique</a>
+        <a href="index.html" class="btn-outline">Retour Accueil</a>
+    </div>
+</header>
+
+    <section class="profile-header">
+        <div class="avatar-circle">A</div>
+        <div class="profile-info">
+            <h1>Antoine Le Goff</h1>
+            <p class="rank">Grade : <strong>Gardien du Littoral</strong></p>
+            <div class="progress-bar-container">
+                <span class="progress-text">Niveau 3 - 750 / 1000 XP</span>
+                <div class="progress-bar"><div class="fill" style="width: 75%;"></div></div>
+            </div>
+            <p style="margin-top: 5px; font-size: 0.9rem; color: #666;">Membre depuis : Juin 2021</p>
+        </div>
+    </section>
+
+    <div class="container account-layout">
+        
+        <div class="section-badges">
+            <h2>🏆 Mes Trophées</h2>
+            <p class="subtitle">Progression : 3 / 6 badges débloqués</p>
+            <div id="badges-grid" class="badges-grid">
+                </div>
+        </div>
+
+        <div class="section-history">
+            <h2>📜 Historique des missions</h2>
+            <p class="subtitle">Retrouvez vos actions passées.</p>
+            
+            <div id="history-list" class="history-list">
+                </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Association Rade de Brest - Projet Agile</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Charge les données au lancement
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBadges();
+            loadHistory();
+        });
+    </script>
+</body>
+</html>
