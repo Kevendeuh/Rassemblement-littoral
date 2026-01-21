@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nettoyage Rade de Brest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🌊 Rassemblement littoral</div>
+        <button id="btn-login-nav" class="btn-outline">Mon Compte</button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Protégeons notre littoral ensemble</h1>
+            <p>Rejoignez la communauté de bénévoles de Brest à Plougasel.</p>
+            <a href="#events-section" class="btn-primary">Voir les actions</a>
+        </div>
+    </section>
+
+    <section id="events-section" class="container">
+        <h2>Prochains Ramassages</h2>
+        <p class="subtitle">Inscrivez-vous pour participer !</p>
+        
+        <div id="events-grid" class="events-grid">
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Association Rade de Brest - Projet Agile</p>
+    </footer>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bienvenue !</h2>
+            <div class="tabs">
+                <button class="tab-link active" onclick="openTab(event, 'Login')">Connexion</button>
+                <button class="tab-link" onclick="openTab(event, 'Signup')">Créer un compte</button>
+            </div>
+
+            <div id="Login" class="tab-content" style="display: block;">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button class="btn-full">Se connecter</button>
+            </div>
+
+            <div id="Signup" class="tab-content" style="display: none;">
+                <input type="text" placeholder="Prénom" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button class="btn-full">S'inscrire</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

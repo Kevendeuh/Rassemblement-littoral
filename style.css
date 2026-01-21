@@ -1,0 +1,188 @@
+/* --- Variables & Reset --- */
+:root {
+    --primary-color: #008080; /* Bleu Canard / Eau */
+    --secondary-color: #2c3e50; /* Gris foncé */
+    --accent-color: #e67e22; /* Orange pour l'action */
+    --bg-light: #f4f7f6;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    padding-bottom: 50px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    background: var(--white);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh; /* Prend 60% de la hauteur de l'écran mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 20px;
+}
+
+.hero h1 { font-size: 2rem; margin-bottom: 10px; }
+.hero p { font-size: 1rem; margin-bottom: 20px; }
+
+/* --- Boutons --- */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-full {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* --- Grille d'événements --- */
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.subtitle { margin-bottom: 20px; color: #7f8c8d; }
+
+.events-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    gap: 20px;
+}
+
+/* Version Desktop */
+@media (min-width: 768px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette/PC */
+    }
+}
+
+/* --- Carte Événement --- */
+.event-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover { transform: translateY(-3px); }
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body { padding: 20px; }
+.card-body h3 { margin-bottom: 10px; font-size: 1.2rem; }
+.card-info { font-size: 0.9rem; color: #555; margin-bottom: 5px; display: flex; align-items: center; }
+.card-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.participant-count {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.btn-join {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-join:hover { background-color: var(--accent-color); }
+
+/* --- Modale --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 200; 
+    left: 0; top: 0; width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.6); 
+}
+.modal-content {
+    background-color: var(--white);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+.close { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; }
+
+.tabs { display: flex; margin-bottom: 15px; border-bottom: 1px solid #ccc; }
+.tab-link { flex: 1; padding: 10px; background: none; border: none; cursor: pointer; font-weight: bold; }
+.tab-link.active { border-bottom: 3px solid var(--primary-color); color: var(--primary-color); }
+
+input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; }
