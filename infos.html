@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infos & Impact - RadePropre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/logo.png" alt="RadePropre Logo" class="logo-img">
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="infos.html" class="active-link">Infos</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="compte.html" id="link-account" class="btn-outline" style="text-decoration:none; border:none;">Mon Compte</a>
+        <button id="auth-btn" class="btn-outline" onclick="toggleAuth()">Déconnexion</button>
+    </div>
+</header>
+
+    <section class="hero" style="height: 30vh; background-image: url('https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=1350&q=80');">
+        <div class="hero-content">
+            <h1>Notre Impact & Fonctionnement</h1>
+            <p>Transparence, Rôles et Engagement</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section class="info-section">
+            <h2>🌍 Nos Résultats</h2>
+            <p class="subtitle">L'impact de la communauté depuis 2024.</p>
+            
+            <div class="impact-dashboard">
+                <div class="impact-card">
+                    <span class="impact-number">2 450 kg</span>
+                    <span class="impact-label">Déchets collectés</span>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">85</span>
+                    <span class="impact-label">Événements réalisés</span>
+                </div>
+                <div class="impact-card green-score">
+                    <span class="impact-number">EcoIndex A</span>
+                    <span class="impact-label">Site Web Low-Carbon</span>
+                    <span class="impact-detail">0.2g CO2 / visite</span>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">450+</span>
+                    <span class="impact-label">Bénévoles actifs</span>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="info-section">
+            <h2>🤝 Les Rôles dans l'Asso</h2>
+            <p class="subtitle">Comment s'impliquer davantage ?</p>
+
+            <div class="roles-grid">
+                <div class="role-box">
+                    <div class="role-icon">🧣</div>
+                    <h3>Ambassadeur</h3>
+                    <p>Bénévole clé qui aide au bon fonctionnement le jour J.</p>
+                    <ul class="role-list">
+                        <li>Accueille les participants</li>
+                        <li>Distribue le matériel</li>
+                        <li><strong>Grade Vétéran :</strong> Après 10 missions, accédez au statut "Vétéran" (fiabilité reconnue).</li>
+                    </ul>
+                    <div class="role-action">
+                        <em>Comment le devenir ?</em> Demandez à un organisateur lors d'une marche ou remplissez le formulaire dans votre compte.
+                    </div>
+                </div>
+
+                <div class="role-box special-role">
+                    <div class="role-icon">👑</div>
+                    <h3>Organisateur</h3>
+                    <p>Le chef d'orchestre d'un événement.</p>
+                    <ul class="role-list">
+                        <li>Crée et gère l'événement sur le site</li>
+                        <li>Coordonne les ambassadeurs</li>
+                        <li>Supervisé par les membres agréés</li>
+                    </ul>
+                    <div class="role-action">
+                        <em>Comment le devenir ?</em> Être Ambassadeur depuis 6 mois OU passer un entretien téléphonique.
+                    </div>
+                </div>
+
+                <div class="role-box">
+                    <div class="role-icon">🏢</div>
+                    <h3>Partenaire</h3>
+                    <p>Entreprises engagées pour le littoral.</p>
+                    <ul class="role-list">
+                        <li>Sponsorise du matériel ou des lieux</li>
+                        <li>Peut déléguer l'organisation à un bénévole</li>
+                        <li>Affiche son logo sur les événements</li>
+                    </ul>
+                    <div class="role-action">
+                        <a href="#funding" style="color:var(--primary-color); font-weight:bold;">Nous contacter pour partenariat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="info-section">
+            <h2>📋 Organiser une Marche</h2>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>La Préparation</h4>
+                        <p>L'organisateur repère le lieu, définit le niveau de difficulté (marées, rochers) et déclare l'événement sur le site.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Le Jour J - Accueil</h4>
+                        <p>Briefing de sécurité, distribution des gants/sacs et répartition des zones par les Ambassadeurs.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Le Tri & Pesée</h4>
+                        <p>Fin de la récolte. On pèse les déchets pour les statistiques et on trie (Recyclable vs Tout-venant).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="funding" class="funding-section">
+            <h2>💰 Soutenez l'action</h2>
+            <p>Nos événements sont gratuits, mais ont un coût.</p>
+            
+            <div class="funding-details">
+                <div class="fund-item">🥪 Nourriture bénévoles</div>
+                <div class="fund-item">🧤 Achat matériel</div>
+                <div class="fund-item">🚐 Location véhicules</div>
+                <div class="fund-item">❤️ Dons aux assos partenaires</div>
+            </div>
+
+            <button class="btn-donate" onclick="alert('Redirection vers la page de don sécurisée...')">Faire un Don / Devenir Partenaire</button>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Association Rade de Brest - Projet Agile</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
