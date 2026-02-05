@@ -1,10 +1,11 @@
 /* --- Variables & Reset --- */
 :root {
-    --primary-color: #008080; /* Bleu Canard / Eau */
-    --secondary-color: #2c3e50; /* Gris foncé */
-    --accent-color: #e67e22; /* Orange pour l'action */
-    --bg-light: #f4f7f6;
+    --primary-color: #448244; /* Bleu Canard / Eau */
+    --secondary-color: #132313; /* Gris foncé */
+    --accent-color: #2b682d; /* Orange pour l'action */
+    --bg-light: #e5f1e0;
     --white: #ffffff;
+    --subtitle: #313131;
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
@@ -97,7 +98,7 @@ body {
     margin: 0 auto;
 }
 
-.subtitle { margin-bottom: 20px; color: #7f8c8d; }
+.subtitle { margin-bottom: 20px; color: var(--subtitle); }
 
 .events-grid {
     display: grid;
@@ -215,7 +216,7 @@ input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; borde
 }
 
 .profile-info h1 { font-size: 1.5rem; margin-bottom: 5px; }
-.rank { color: #7f8c8d; margin-bottom: 10px; font-size: 0.9rem; }
+.rank { color: var(--subtitle); margin-bottom: 10px; font-size: 0.9rem; }
 
 /* Barre de progression */
 .progress-bar-container { width: 100%; max-width: 300px; }
@@ -267,7 +268,7 @@ input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; borde
 }
 
 .badge-card.unlocked {
-    border: 2px solid #ffd700; /* Bordure dorée */
+    border: 2px solid var(--primary-color); /* Bordure dorée */
     background: linear-gradient(to bottom right, #fff, #fffdf0);
 }
 
@@ -333,7 +334,7 @@ input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; borde
 
 .history-content { flex: 1; }
 .history-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
-.history-loc { font-size: 0.85rem; color: #7f8c8d; }
+.history-loc { font-size: 0.85rem; color: #191919; }
 
 .history-status {
     font-size: 0.8rem;

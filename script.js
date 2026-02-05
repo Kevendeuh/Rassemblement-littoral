@@ -12,17 +12,17 @@ const eventsData = [
         location: "Brest",
         participants: 12,
         maxParticipants: 20,
-        image: "🌊"
+        // image: "🌊"
     },
     {
         id: 2,
-        title: "Opération Port de Plouzané",
+        title: "Visite d'une ferme Biologique",
         date: "Dimanche 25 Juin",
-        time: "09h30",
+        time: "09h00-18h00",
         location: "Plouzané",
         participants: 5,
         maxParticipants: 10,
-        image: "⚓"
+        // image: "⚓"
     },
     {
         id: 3,
@@ -31,8 +31,8 @@ const eventsData = [
         time: "15h00",
         location: "Plougastel-Daoulas",
         participants: 15,
-        maxParticipants: 15, // Complet
-        image: "🌿"
+        maxParticipants: 15,
+        // image: "🌿"
     },
     {
         id: 4,
@@ -42,8 +42,18 @@ const eventsData = [
         location: "Brest - Château",
         participants: 45,
         maxParticipants: 100,
-        image: "🏰"
-    }
+        // image: "🏰"
+    },
+    {
+        id: 5,
+        title: "Ramassage de déchets dans la Ria",
+        date: "Samedi 15 Septembre",
+        time: "09h30",
+        location: "Le Conquet",
+        participants: 5,
+        maxParticipants: 10,
+        // image: "⚓"
+    },
 ];
 
 // --- Boutique (Merch) ---
@@ -127,13 +137,13 @@ function renderEvents() {
                 <span>📍 ${event.location}</span>
             </div>
             <div class="card-body">
-                <h3>${event.image} ${event.title}</h3>
+                <h3>${event.title}</h3>
                 <div class="card-info">🕒 Horaire : ${event.time}</div>
                 <div class="card-info">
                     👥 Inscrits : <span id="count-${event.id}" class="participant-count">${event.participants}</span> / ${event.maxParticipants}
                 </div>
                 <div class="event-progress">
-                    <div class="event-bar" style="width:${(event.participants/event.maxParticipants)*100}%"></div>
+                    <div class="event-bar" style="width: ${(event.participants/event.maxParticipants)*100}%"></div>
                 </div>
             </div>
             <div class="card-footer">
