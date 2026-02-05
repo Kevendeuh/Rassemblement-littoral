@@ -2,9 +2,9 @@
    1. VARIABLES & RESET
    ========================================= */
 :root {
-    --primary-color: #448244; /* Bleu Canard */
-    --secondary-color: #2b682d; /* Gris foncé */
-    --accent-color: #e67e22; /* Orange */
+    --primary-color: #448244; 
+    --secondary-color: #2b682d; 
+    --accent-color: #e67e22; 
     --bg-light: #f4f7f6;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -28,7 +28,7 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
     box-shadow: var(--shadow);
 }
 
-/* Logo Image (Taille augmentée à 80px) */
+/* Logo Image */
 .logo-img {
     height: 80px; 
     width: auto;
@@ -152,7 +152,7 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
 .status-absent { background-color: #fadbd8; color: #c0392b; }
 
 /* =========================================
-   7. MODALE & POP-UPS (Centrage)
+   7. MODALE & POP-UPS
    ========================================= */
 .modal {
     display: none; 
@@ -167,7 +167,7 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
     background-color: var(--white);
     padding: 20px;
     border-radius: 10px;
-    position: absolute; /* Utilisation d'absolute avec transform pour un centrage parfait */
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -193,8 +193,8 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
 /* --- Styles Spécifiques aux Grades (Niveaux) --- */
 
 .level-unlocked {
-    border: 2px solid var(--primary-color); /* Bordure Bleu Canard */
-    background: linear-gradient(to bottom right, #fff, #e0f2f1); /* Fond légèrement bleuté */
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(to bottom right, #fff, #e0f2f1);
 }
 
 .level-locked {
@@ -204,14 +204,13 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
     border: 1px dashed #ccc;
 }
 
-/* Petit ajustement pour que les grades soient bien distincts */
 .level-unlocked .badge-title {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8rem;
 }
 /* =========================================
-   8. PAGE INFOS & IMPACT (NOUVEAU)
+   8. PAGE INFOS & IMPACT
    ========================================= */
 
 .info-section { margin-bottom: 40px; }
@@ -262,7 +261,7 @@ body { background-color: var(--bg-light); color: var(--secondary-color); padding
     position: relative;
 }
 
-.special-role { border: 2px solid var(--accent-color); background: #fffbf0; } /* Mise en avant Organisateur */
+.special-role { border: 2px solid var(--accent-color); background: #fffbf0; }
 
 .role-icon { font-size: 2.5rem; margin-bottom: 15px; }
 .role-box h3 { color: var(--primary-color); margin-bottom: 10px; }

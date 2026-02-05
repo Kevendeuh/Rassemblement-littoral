@@ -232,19 +232,19 @@ function loadHistory() {
 // ==========================================
 function toggleAuth() {
     const btnAuth = document.getElementById('auth-btn');
-    const btnAccount = document.getElementById('link-account'); // On cible le bouton Mon Compte via son ID
+    const btnAccount = document.getElementById('link-account');
 
     if(btnAuth.innerText === "Déconnexion") {
-        // --- ACTION : SE DÉCONNECTER ---
+        // deconnexion
         btnAuth.innerText = "Connexion";
         
-        // CACHER le bouton Mon Compte
+        // cacher le bouton Mon Compte
         if(btnAccount) btnAccount.style.display = "none";
 
         alert("Vous êtes déconnecté.");
 
     } else {
-        // --- ACTION : SE CONNECTER ---
+        // se connecter
         btnAuth.innerText = "Déconnexion";
         
         // Reset du style du bouton Auth
@@ -253,7 +253,7 @@ function toggleAuth() {
         btnAuth.style.color = ""; 
         btnAuth.style.borderColor = "";
 
-        // AFFICHER le bouton Mon Compte
+        // afficher le bouton Mon Compte
         if(btnAccount) btnAccount.style.display = "inline-block";
 
         alert("Bon retour, Antoine !");
@@ -281,15 +281,15 @@ const levelsData = [
 // --- Fonction pour afficher les Grades ---
 function loadLevels() {
     const grid = document.getElementById('levels-grid');
-    if (!grid) return; // Sécurité
+    if (!grid) return; 
 
     grid.innerHTML = "";
     levelsData.forEach(lvl => {
-        // On utilise des styles différents pour les grades
+        
         const statusClass = lvl.reached ? 'level-unlocked' : 'level-locked';
         
         const div = document.createElement('div');
-        div.className = `badge-card ${statusClass}`; // On réutilise la base badge-card
+        div.className = `badge-card ${statusClass}`;
         
         div.innerHTML = `
             <div class="badge-icon" style="font-size: 2.5rem;">${lvl.icon}</div>
@@ -300,13 +300,12 @@ function loadLevels() {
     });
 }
 
-// ... (Garde loadBadges, loadHistory, toggleAuth...) ...
 
 // --- INITIALISATION (Mise à jour) ---
 document.addEventListener('DOMContentLoaded', function() {
     renderEvents();
     loadBadges();
-    loadLevels(); // <--- N'OUBLIE PAS D'AJOUTER CETTE LIGNE
+    loadLevels();
     loadHistory();
     renderShop();
 });
