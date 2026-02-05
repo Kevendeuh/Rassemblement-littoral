@@ -10,10 +10,15 @@
 <body>
 
 <header class="navbar">
-    <div class="logo">🌊 Rassemblement littoral</div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="logo.png" alt="RadePropre Logo" class="logo-img">
+        </a>
+    </div>
     <div class="nav-links">
         <a href="boutique.html">Boutique</a>
-        <a href="compte.html" class="btn-outline" style="text-decoration:none;">Mon Compte</a>
+        <a href="compte.html" id="link-account" class="btn-outline" style="text-decoration:none; border:none;">Mon Compte</a>
+        <button id="auth-btn" class="btn-outline" onclick="toggleAuth()">Déconnexion</button>
     </div>
 </header>
 
@@ -27,7 +32,7 @@
 
     <section id="events-section" class="container">
         <h2>Prochains Ramassages</h2>
-        <p class="subtitle">Inscrivez-vous pour participer !</p>
+        <p class="subtitle">Cliquez sur une carte pour voir les détails (Météo, Plan, Équipement).</p>
         
         <div id="events-grid" class="events-grid">
             </div>
@@ -37,27 +42,26 @@
         <p>&copy; 2026 Association Rade de Brest - Projet Agile</p>
     </footer>
 
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Bienvenue !</h2>
-            <div class="tabs">
-                <button class="tab-link active" onclick="openTab(event, 'Login')">Connexion</button>
-                <button class="tab-link" onclick="openTab(event, 'Signup')">Créer un compte</button>
-            </div>
+    <div id="event-details-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeEventDetails()">×</span>
+            <h2 id="modal-title">Titre</h2>
+            <p id="modal-desc" style="color:#666; margin-bottom:15px;"></p>
 
-            <div id="Login" class="tab-content" style="display: block;">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Mot de passe" required>
-                <button class="btn-full">Se connecter</button>
+            <div class="details-layout">
+                <div class="details-info">
+                    <div class="info-box"><h4>🌤️ Météo prévue</h4><p id="modal-weather">...</p></div>
+                    <div class="info-box"><h4>😓 Niveau Fatigue</h4><p id="modal-fatigue">...</p></div>
+                    <div class="info-box"><h4>♿ Accessibilité</h4><p id="modal-handicap">...</p></div>
+                    <div class="info-box"><h4>🧤 Équipements conseillés</h4><ul id="modal-equip" style="list-style:none; padding-left:0;"></ul></div>
+                </div>
+                <div class="details-map">
+                    <h4>📍 Localisation</h4>
+                    <iframe id="modal-map" width="100%" height="250" style="border:0; border-radius:10px;" allowfullscreen></iframe>
+                </div>
             </div>
-
-            <div id="Signup" class="tab-content" style="display: none;">
-                <input type="text" placeholder="Prénom" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Mot de passe" required>
-                <button class="btn-full">S'inscrire</button>
-            </div>
+            <br>
+            <button class="btn-full" onclick="closeEventDetails()">Fermer</button>
         </div>
     </div>
 

@@ -1,30 +1,24 @@
-/* --- Variables & Reset --- */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
-    --primary-color: #008080; /* Bleu Canard / Eau */
+    --primary-color: #008080; /* Bleu Canard */
     --secondary-color: #2c3e50; /* Gris foncé */
-    --accent-color: #e67e22; /* Orange pour l'action */
+    --accent-color: #e67e22; /* Orange */
     --bg-light: #f4f7f6;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+body { background-color: var(--bg-light); color: var(--secondary-color); padding-bottom: 50px; }
 
-body {
-    background-color: var(--bg-light);
-    color: var(--secondary-color);
-    padding-bottom: 50px;
-}
-
-/* --- Navigation --- */
+/* =========================================
+   2. NAVIGATION (HEADER)
+   ========================================= */
 .navbar {
     background: var(--white);
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,18 +28,25 @@ body {
     box-shadow: var(--shadow);
 }
 
-.logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-color);
+/* Logo Image (Taille augmentée à 80px) */
+.logo-img {
+    height: 80px; 
+    width: auto;
+    display: block;
 }
 
-/* --- Hero Section --- */
+.nav-links { display: flex; gap: 15px; align-items: center; }
+.nav-links a { color: var(--secondary-color); text-decoration: none; font-weight: 600; }
+.nav-links a.active-link { color: var(--primary-color); text-decoration: underline; }
+
+/* =========================================
+   3. ÉLÉMENTS COMMUNS (BOUTONS & HERO)
+   ========================================= */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
-    height: 60vh; /* Prend 60% de la hauteur de l'écran mobile */
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,367 +54,159 @@ body {
     color: var(--white);
     padding: 20px;
 }
-
 .hero h1 { font-size: 2rem; margin-bottom: 10px; }
 .hero p { font-size: 1rem; margin-bottom: 20px; }
 
-/* --- Boutons --- */
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    display: inline-block;
+/* Styles Boutons */
+.btn-primary { background-color: var(--primary-color); color: var(--white); padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; }
+.btn-full { width: 100%; background-color: var(--primary-color); color: var(--white); padding: 12px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer; font-size: 1rem; }
+
+.btn-disabled { background-color: #bdc3c7; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: not-allowed; width: 100%; }
+
+/* Bouton Outline (Mon Compte / Déconnexion) */
+.btn-outline { 
+    border: 2px solid var(--primary-color); 
+    color: var(--primary-color); 
+    background: transparent; 
+    padding: 8px 15px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    text-decoration: none; 
 }
 
-.btn-outline {
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    background: transparent;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.btn-full {
-    width: 100%;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-/* --- Grille d'événements --- */
-.container {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
+/* =========================================
+   4. PAGE ACCUEIL (GRILLE EVENTS)
+   ========================================= */
+.container { padding: 20px; max-width: 1000px; margin: 0 auto; }
 .subtitle { margin-bottom: 20px; color: #7f8c8d; }
+.events-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 768px) { .events-grid { grid-template-columns: repeat(2, 1fr); } }
 
-.events-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 colonne sur mobile */
-    gap: 20px;
-}
-
-/* Version Desktop */
-@media (min-width: 768px) {
-    .events-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette/PC */
-    }
-}
-
-/* --- Carte Événement --- */
-.event-card {
-    background: var(--white);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Carte Événement */
+.event-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s; display: flex; flex-direction: column; cursor: pointer; }
 .event-card:hover { transform: translateY(-3px); }
-
-.card-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-}
-
+.card-header { background-color: var(--primary-color); color: white; padding: 10px; font-size: 0.9rem; font-weight: bold; display: flex; justify-content: space-between; }
 .card-body { padding: 20px; }
 .card-body h3 { margin-bottom: 10px; font-size: 1.2rem; }
 .card-info { font-size: 0.9rem; color: #555; margin-bottom: 5px; display: flex; align-items: center; }
-.card-footer {
-    padding: 15px 20px;
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.card-footer { padding: 15px 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.participant-count { font-weight: bold; color: var(--accent-color); }
 
-.participant-count {
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-.btn-join {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+.btn-join { background-color: var(--secondary-color); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
 .btn-join:hover { background-color: var(--accent-color); }
+.card-full { opacity: 0.8; }
 
-/* --- Modale --- */
+/* Jauge de progression */
+.event-progress { width: 100%; height: 6px; background-color: #eee; border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.event-bar { height: 100%; background-color: var(--accent-color); transition: width 0.3s ease; }
+
+/* =========================================
+   5. BOUTIQUE
+   ========================================= */
+.shop-card { background: var(--white); border-radius: 10px; padding: 20px; text-align: center; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
+.shop-card:hover { transform: translateY(-3px); }
+.shop-icon { font-size: 3rem; margin-bottom: 10px; }
+.shop-desc { font-size: 0.85rem; color: #666; margin: 10px 0; }
+.shop-prices { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; font-weight: bold; }
+.price-xp { color: var(--accent-color); background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.9rem; }
+.price-eur { color: var(--primary-color); font-size: 0.9rem; }
+.btn-buy { background-color: var(--primary-color); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+.btn-buy:hover { background-color: #006666; }
+
+/* =========================================
+   6. MON COMPTE (Profil & Historique)
+   ========================================= */
+.profile-header { background-color: var(--white); padding: 30px 20px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+.avatar-circle { width: 80px; height: 80px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; border: 4px solid #b2dfdb; }
+.profile-info h1 { font-size: 1.5rem; margin-bottom: 5px; }
+.rank { color: #7f8c8d; margin-bottom: 10px; font-size: 0.9rem; }
+.progress-bar-container { width: 100%; max-width: 300px; }
+.progress-text { font-size: 0.8rem; font-weight: bold; color: var(--accent-color); }
+.progress-bar { height: 10px; background-color: #eee; border-radius: 5px; margin-top: 5px; overflow: hidden; }
+.fill { height: 100%; background-color: var(--accent-color); }
+
+.badges-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+@media (min-width: 768px) { .badges-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.badge-card { background: var(--white); border-radius: 15px; padding: 20px; text-align: center; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.3s; position: relative; }
+.badge-icon { font-size: 3rem; margin-bottom: 10px; }
+.badge-title { font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
+.badge-desc { font-size: 0.8rem; color: #666; }
+.badge-card.locked { filter: grayscale(100%); opacity: 0.6; background-color: #f9f9f9; }
+.badge-card.unlocked { border: 2px solid #ffd700; background: linear-gradient(to bottom right, #fff, #fffdf0); }
+.badge-card.unlocked::after { content: '✔'; position: absolute; top: 10px; right: 10px; background: #27ae60; color: white; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; }
+
+.account-layout { display: flex; flex-direction: column; gap: 40px; }
+@media (min-width: 992px) { .account-layout { flex-direction: row; align-items: flex-start; } .section-badges { flex: 3; } .section-history { flex: 2; } }
+
+.history-list { background: var(--white); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; }
+.history-item { padding: 15px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 15px; transition: background 0.2s; }
+.history-item:last-child { border-bottom: none; }
+.history-date { font-weight: bold; color: var(--primary-color); font-size: 0.9rem; min-width: 80px; }
+.history-content { flex: 1; }
+.history-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+.history-loc { font-size: 0.85rem; color: #7f8c8d; }
+.history-status { font-size: 0.8rem; padding: 4px 8px; border-radius: 12px; font-weight: bold; }
+.status-done { background-color: #d5f5e3; color: #27ae60; }
+.status-absent { background-color: #fadbd8; color: #c0392b; }
+
+/* =========================================
+   7. MODALE & POP-UPS (Centrage)
+   ========================================= */
 .modal {
     display: none; 
     position: fixed; 
     z-index: 200; 
     left: 0; top: 0; width: 100%; height: 100%; 
     background-color: rgba(0,0,0,0.6); 
+    overflow: auto;
 }
+
 .modal-content {
     background-color: var(--white);
-    margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
+    position: absolute; /* Utilisation d'absolute avec transform pour un centrage parfait */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
     width: 90%;
     max-width: 400px;
-    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
+.modal-large { max-width: 800px; }
 .close { position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; }
 
-.tabs { display: flex; margin-bottom: 15px; border-bottom: 1px solid #ccc; }
-.tab-link { flex: 1; padding: 10px; background: none; border: none; cursor: pointer; font-weight: bold; }
-.tab-link.active { border-bottom: 3px solid var(--primary-color); color: var(--primary-color); }
+/* Layout Détails Event */
+.details-layout { display: flex; flex-direction: column; gap: 20px; }
+@media (min-width: 768px) { 
+    .details-layout { flex-direction: row; } 
+    .details-info { flex: 1; }
+    .details-map { flex: 1; }
+}
+.info-box { background-color: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid var(--primary-color); }
+.info-box h4 { margin-bottom: 5px; font-size: 0.95rem; color: var(--secondary-color); }
 
-input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px; }
+/* --- Styles Spécifiques aux Grades (Niveaux) --- */
 
-/* --- CSS POUR PAGE BADGES --- */
-
-/* Profil Header */
-.profile-header {
-    background-color: var(--white);
-    padding: 30px 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+.level-unlocked {
+    border: 2px solid var(--primary-color); /* Bordure Bleu Canard */
+    background: linear-gradient(to bottom right, #fff, #e0f2f1); /* Fond légèrement bleuté */
 }
 
-.avatar-circle {
-    width: 80px;
-    height: 80px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    border: 4px solid #b2dfdb;
-}
-
-.profile-info h1 { font-size: 1.5rem; margin-bottom: 5px; }
-.rank { color: #7f8c8d; margin-bottom: 10px; font-size: 0.9rem; }
-
-/* Barre de progression */
-.progress-bar-container { width: 100%; max-width: 300px; }
-.progress-text { font-size: 0.8rem; font-weight: bold; color: var(--accent-color); }
-.progress-bar {
-    height: 10px;
-    background-color: #eee;
-    border-radius: 5px;
-    margin-top: 5px;
-    overflow: hidden;
-}
-.fill { height: 100%; background-color: var(--accent-color); }
-
-/* Grille des Badges */
-.badges-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 par ligne sur mobile */
-    gap: 15px;
-}
-
-@media (min-width: 768px) {
-    .badges-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-/* Carte Badge */
-.badge-card {
-    background: var(--white);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-    position: relative;
-}
-
-.badge-icon { font-size: 3rem; margin-bottom: 10px; }
-.badge-title { font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
-.badge-desc { font-size: 0.8rem; color: #666; }
-
-/* États du badge */
-.badge-card.locked {
+.level-locked {
     filter: grayscale(100%);
-    opacity: 0.6;
-    background-color: #f9f9f9;
-}
-
-.badge-card.unlocked {
-    border: 2px solid #ffd700; /* Bordure dorée */
-    background: linear-gradient(to bottom right, #fff, #fffdf0);
-}
-
-.badge-card.unlocked::after {
-    content: '✔';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #27ae60;
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* --- CSS POUR PAGE MON COMPTE --- */
-
-/* Layout 2 colonnes sur Desktop */
-.account-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-@media (min-width: 992px) {
-    .account-layout {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-    .section-badges { flex: 3; } /* Les badges prennent plus de place */
-    .section-history { flex: 2; }
-}
-
-/* Style de la liste d'historique */
-.history-list {
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-}
-
-.history-item {
-    padding: 15px 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: background 0.2s;
-}
-
-.history-item:last-child { border-bottom: none; }
-.history-item:hover { background-color: #f9f9f9; }
-
-.history-date {
-    font-weight: bold;
-    color: var(--primary-color);
-    font-size: 0.9rem;
-    min-width: 80px;
-}
-
-.history-content { flex: 1; }
-.history-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
-.history-loc { font-size: 0.85rem; color: #7f8c8d; }
-
-.history-status {
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-weight: bold;
-}
-
-.status-done { background-color: #d5f5e3; color: #27ae60; } /* Vert */
-.status-absent { background-color: #fadbd8; color: #c0392b; } /* Rouge */
-
-/* --- NOUVEAUTÉS BOUTIQUE ET EVENTS --- */
-
-/* Jauge de progression dans les events */
-.event-progress {
-    width: 100%;
-    height: 6px;
+    opacity: 0.5;
     background-color: #eee;
-    border-radius: 3px;
-    margin-top: 8px;
-    overflow: hidden;
-}
-.event-bar {
-    height: 100%;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
+    border: 1px dashed #ccc;
 }
 
-/* Bouton Complet / Désactivé */
-.btn-disabled {
-    background-color: #bdc3c7;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: none;
-    cursor: not-allowed;
-    width: 100%;
+/* Petit ajustement pour que les grades soient bien distincts */
+.level-unlocked .badge-title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
 }
-.card-full { opacity: 0.8; } /* Effet visuel si event complet */
-
-/* Navigation Links (header) */
-.nav-links { display: flex; gap: 15px; align-items: center; }
-.nav-links a { color: var(--secondary-color); text-decoration: none; font-weight: 600; }
-.nav-links a.active-link { color: var(--primary-color); text-decoration: underline; }
-
-/* Cartes Boutique */
-.shop-card {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s;
-}
-.shop-card:hover { transform: translateY(-3px); }
-
-.shop-icon { font-size: 3rem; margin-bottom: 10px; }
-.shop-desc { font-size: 0.85rem; color: #666; margin: 10px 0; }
-
-.shop-prices {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-.price-xp { color: var(--accent-color); background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.9rem; }
-.price-eur { color: var(--primary-color); font-size: 0.9rem; }
-
-.btn-buy {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-}
-.btn-buy:hover { background-color: #006666; }

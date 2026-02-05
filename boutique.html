@@ -10,10 +10,15 @@
 <body>
 
     <header class="navbar">
-        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">🌊 RadePropre</a></div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="RadePropre Logo" class="logo-img">
+            </a>
+        </div>
         <div class="nav-links">
             <a href="boutique.html" class="active-link">Boutique</a>
-            <a href="compte.html" class="btn-outline" style="text-decoration:none;">Mon Compte</a>
+            <a href="compte.html" id="link-account" class="btn-outline" style="text-decoration:none; border:none;">Mon Compte</a>
+            <button id="auth-btn" class="btn-outline" onclick="toggleAuth()">Déconnexion</button>
         </div>
     </header>
 
@@ -27,8 +32,7 @@
     <section class="container">
         <h2>Équipements & Goodies</h2>
         <p class="subtitle">Des produits durables pour un littoral propre.</p>
-        
-        <div id="shop-grid" class="badges-grid"> </div>
+        <div id="shop-grid" class="badges-grid"></div>
     </section>
 
     <footer>
